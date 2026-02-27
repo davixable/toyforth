@@ -352,6 +352,10 @@ void execute(tfobj *program_list, tfcontext *context) {
                 exit(EXIT_FAILURE);
             }
         }
+        else {
+            fprintf(stderr, "Found an unexecutable object during execution.\n");
+            exit(EXIT_FAILURE);
+        }
     }
 }
 ```
