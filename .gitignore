@@ -1,6 +1,7 @@
 *.o
+*.out
 toyforth
 toyforth.exe
-*.out
 .DS_Store
 Thumbs.db
+
