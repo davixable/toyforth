@@ -135,6 +135,20 @@ Test cases are in the [`tests`](tests) directory:
 
 ToyForth demonstrates several important interpreter design patterns. This section provides a deep dive into the implementation.
 
+### Core Modules
+
+| Module | Purpose | Implementation |
+|--------|---------|-----------------|
+| [`tforth.h`](src/tforth.h) | Central type definitions | Defines `tfobj` tagged union and enumeration of all object types |
+| [`mem.h`](src/mem.h) | Memory management | Reference counting with `incrementReferenceCount()` and `decrementReferenceCount()` for automatic deallocation |
+| [`stack.h`](src/stack.h) | Stack operations | LIFO data structure with `stackPush()` and `stackPop()` maintaining reference counts |
+| [`list.h`](src/list.h) | Dynamic arrays | Growable list of `tfobj*` with `listAppendObject()` and automatic capacity management |
+| [`parser.h`](src/parser.h) | Lexical analysis & compilation | Tokenizes source text and produces compiled program list via `compile()` |
+| [`dictionary.h`](src/dictionary.h) | Operation lookup | Static hash table mapping operation names to function pointers via `lookupOperation()` |
+| [`ops.h`](src/ops.h) | Arithmetic & stack operations | Implements `operationAdd()`, `operationSub()`, `operationMul()`, `operationDiv()`, `operationDup()`, `operationDrop()`, `operationSwap()`, `operationPrint()` |
+| [`engine.h`](src/engine.h) | Execution engine | Fetch-execute loop in `execute()` that interprets compiled programs on the stack VM |
+| [`file_utils.h`](src/file_utils.h) | File I/O | Reads source files into memory via `readFile()` for compilation |
+
 ### Data Structures
 
 The core of ToyForth is the **tagged union** data structure, defined in [`src/tforth.h`](src/tforth.h):
