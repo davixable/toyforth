@@ -1,13 +1,6 @@
-# Compiled Object files
 *.o
-
-# Executables
 toyforth
 toyforth.exe
-
-# Test outputs
 *.out
-
-# OS generated files
 .DS_Store
 Thumbs.db
